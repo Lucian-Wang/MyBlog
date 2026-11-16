@@ -1,0 +1,15 @@
+# Apache 伪静态配置
+RewriteEngine On
+
+# 允许直接访问的文件和目录
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# 前台伪静态规则
+RewriteRule ^page/(\d+)$ index.php?page=$1 [L,QSA]
+RewriteRule ^article/(\d+)$ view.php?id=$1 [L,QSA]
+RewriteRule ^archive$ archive.php [L,QSA]
+
+# 404 页面
+ErrorDocument 404 /404.php

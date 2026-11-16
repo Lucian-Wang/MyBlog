@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.subtitle|e }}">
+    <title>文章归档 - {{ site.title|e }}</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <a href="/">
+            <h1>{{ site.title|e }}</h1>
+        </a>
+        <p class="subtitle">{{ site.subtitle|e }}</p>
+        <nav class="site-nav">
+            <a href="/">🏠 首页</a>
+            <a href="/archive" class="active">📚 归档</a>
+        </nav>
+    </header>
+    <main>
+        <div class="content-card">
+            <h1 class="archive-title">📚 文章归档</h1>
+            {% if archives|length > 0 %}
+                {% for year_month, articles in archives %}
+                <div class="archive-section">
+                    <h2 class="archive-yearmonth">{{ year_month|replace({'-':'年'}) }}月</h2>
+                    <ul class="archive-list">
+                        {% for article in articles %}
+                        <li class="archive-item">
+                            <a class="archive-link" href="/article/{{ article.id }}">
+                                <span class="archive-title-item">{{ article.title }}</span>
+                                <span class="archive-date">{{ article.date|date("Y-m-d") }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="archive-empty">暂无文章归档。</p>
+            {% endif %}
+        </div>
+    </main>
+    <footer>
+        {{ site.footer|raw }}
+    </footer>
+</div>
+</body>
+</html>

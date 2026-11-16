@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ article.title|e }}">
+    <title>{{ article.title|e }} - {{ site.title|e }}</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <div class="reading-progress" id="readingProgress"></div>
+    <div class="container">
+        <header>
+            <a href="/">
+                <h1>{{ site.title|e }}</h1>
+            </a>
+            <p class="subtitle">{{ site.subtitle|e }}</p>
+            <nav class="site-nav">
+            <a href="/">🏠 首页</a>
+            <a href="/archive">📚 归档</a>
+        </nav>
+        </header>
+        <main>
+            <div class="content-card">
+                <div class="article-header">
+                    <h1>{{ article.title|e }}</h1>
+                    <div class="article-meta">
+                        <div class="meta-item">
+                            <span class="meta-icon">📅</span>
+                            <span>{{ article.date|date('Y年m月d日') }}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">⏱️</span>
+                            <span id="readTime">约 5 分钟阅读</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">✍️</span>
+                            <span>原创</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-content">{{ article.content_html|raw }}</div>
+                <div class="article-actions">
+                    <div class="share-buttons">
+                        <button class="share-btn" onclick="copyLink()">
+                            <span>🔗</span>
+                            <span>复制链接</span>
+                        </button>
+                        <button class="share-btn" onclick="shareWeibo()">
+                            <span>📢</span>
+                            <span>分享微博</span>
+                        </button>
+                    </div>
+                    <a href="/" class="view-back-btn">返回首页</a>
+                </div>
+            </div>
+        </main>
+        <footer>
+            {{ site.footer|raw }}
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('readingProgress').style.width = progress + '%';
+        });
+
+        function estimateReadTime() {
+            const content = document.querySelector('.article-content').innerText;
+            const words = content.replace(/\s/g, '').length;
+            const readTime = Math.max(1, Math.ceil(words / 300));
+            document.getElementById('readTime').textContent = '约 ' + readTime + ' 分钟阅读';
+        }
+        estimateReadTime();
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                alert('链接已复制！');
+            }).catch(function() {
+                alert('复制失败，请手动复制');
+            });
+        }
+
+        function shareWeibo() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent('{{ article.title|e }}');
+            window.open('https://service.weibo.com/share/share.php?url=' + url + '&title=' + title, '_blank');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+# 敏感配置文件
+config.php
+
+# 上传文件
+/uploads/*
+!/uploads/.gitkeep
+
+# 编辑器文档（可选保留，但太大）
+/assets/editor.md/docs/
+/assets/editor.md/examples/
+
+# 日志文件
+*.log
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Local secrets and runtime data
+.env
+.env.*
+!.env.example
+!.env.sample
+*.jks
+*.keystore
+*.p12
+*.pfx
+*_private.pem
+*.log
+__pycache__/
+*.pyc

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>页面跑丢了！</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <style>
+        .notfound-container {
+            background: #fff;
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            animation: fadeIn 0.6s ease-out;
+        }
+        .notfound-code {
+            font-size: 6em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4f46e5 0%, #ec4899 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: bounce 2s ease-in-out infinite;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        .notfound-text {
+            font-size: 1.1em;
+            color: #64748b;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .notfound-emoji {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: shake 3s ease-in-out infinite;
+        }
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+        .notfound-tips {
+            font-size: 0.9em;
+            color: #94a3b8;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px dashed #e2e8f0;
+        }
+        .notfound-tips p {
+            margin: 8px 0;
+        }
+        .notfound-tips span {
+            display: inline-block;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 4px 12px;
+            border-radius: 12px;
+            color: #92400e;
+            font-weight: 500;
+            margin: 4px;
+        }
+        @media (max-width: 640px) {
+            .notfound-container {
+                padding: 32px 24px;
+            }
+            .notfound-code {
+                font-size: 4em;
+            }
+            .notfound-emoji {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <a href="/">
+            <h1>我的博客</h1>
+        </a>
+        <p class="subtitle">记录点滴，分享生活</p>
+        <nav class="site-nav">
+            <a href="/">🏠 首页</a>
+            <a href="/archive.php">📚 归档</a>
+        </nav>
+    </header>
+    <main>
+        <div class="notfound-container">
+            <div class="notfound-emoji">🤔</div>
+            <div class="notfound-code">404</div>
+            <div class="notfound-text">
+                <strong>哎呀！页面好像迷路了！</strong><br>
+                它可能去喝咖啡了 ☕，或者去看星星了 ✨
+            </div>
+            <div class="notfound-text" style="font-size: 1em; color: #94a3b8;">
+                不过没关系，生活就是这样，有时候会走错路~
+            </div>
+            <a href="/" class="notfound-link">🚀 回到首页</a>
+            <div class="notfound-tips">
+                <p><strong>💡 你可以尝试：</strong></p>
+                <p>
+                    <span>检查网址是否正确</span>
+                    <span>返回首页重新开始</span>
+                    <span>去归档页看看</span>
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        © 2025 博客后台
+    </footer>
+</div>
+</body>
+</html>
